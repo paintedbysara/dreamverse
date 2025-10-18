@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 기반 유통 최적화 컨설턴트 | 지역 유통의 미래를 설계합니다</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-emojis {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #2d3748;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 문제 제시 섹션 */
+        .problem-section {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .problem-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .problem-stat {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        /* 솔루션 섹션 */
+        .solution-section {
+            background: white;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .solution-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .solution-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* 서비스 섹션 */
+        .services-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .services-section .section-title {
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            color: #333;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .service-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #f5576c;
+        }
+
+        .service-detail-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-detail-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        /* 모달 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-detail h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #f5576c;
+        }
+
+        .modal-detail .included-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .modal-detail .included-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-detail .included-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* 프로세스 섹션 */
+        .process-section {
+            background: white;
+        }
+
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .process-number {
+            font-size: 4em;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .process-content h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        /* 특장점 섹션 */
+        .features-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .features-section .section-title {
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        /* 가격 섹션 */
+        .pricing-section {
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: #667eea;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .pricing-card.featured {
+            border-color: #667eea;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        .pricing-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .pricing-price {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #2d3748;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* FAQ 섹션 */
+        .faq-section {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f6f8fb;
+            color: #667eea;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .faq-answer.active {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        /* CTA 섹션 */
+        .cta-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-section .cta-emojis {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            font-size: 1.1em;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.7;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 20px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-emojis">🤖 📊 🚚 🌾 📈</div>
+            <h1>AI 기반 유통 최적화 컨설턴트</h1>
+            <p>지역 농산물·특산품의 스마트한 유통 혁신을 이끌어갑니다<br>AI 예측으로 재고 비용 절감과 공급망 효율을 극대화하세요</p>
+            <div class="cta-buttons">
+                <a href="#services" class="cta-button cta-primary">서비스 소개 보기</a>
+                <a href="https://forms.gle/YOUR_FORM_LINK" target="_blank" class="cta-button cta-secondary">무료 상담 신청</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문제 제시 섹션 -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">왜 AI 기반 유통 최적화가 필요한가요? 🤔</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">📦</div>
+                    <h3>예측 불가능한 재고 관리</h3>
+                    <p>계절성과 시장 변동성으로 인해 지역 농산물의 수요 예측이 어렵습니다. 재고 부족으로 기회를 놓치거나, 과잉 재고로 인한 폐기 손실이 발생합니다.</p>
+                    <div class="problem-stat">평균 재고 폐기율 15-20%</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🚛</div>
+                    <h3>비효율적인 배송 시스템</h3>
+                    <p>체계적인 물류 계획 없이 운영되는 배송 루트로 인해 운송비가 과도하게 발생하고, 신선도 유지에 어려움을 겪습니다.</p>
+                    <div class="problem-stat">물류비용 전체 비용의 30% 이상</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💡</div>
+                    <h3>데이터 분석 역량 부족</h3>
+                    <p>중소 유통 기업은 수집된 데이터를 비즈니스 의사결정으로 전환할 전문 인력과 시스템이 부족합니다. AI 기술에 대한 접근성이 낮습니다.</p>
+                    <div class="problem-stat">중소기업 데이터 활용률 10% 미만</div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>급변하는 소비 트렌드</h3>
+                    <p>로컬 푸드, 친환경 농산물 등 소비 트렌드가 빠르게 변화하지만, 이를 실시간으로 반영한 유통 전략 수립이 어렵습니다.</p>
+                    <div class="problem-stat">트렌드 대응 시간 평균 3-6개월</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 솔루션 섹션 -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title">AI 유통 최적화 컨설팅의 해결책 💎</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <h3>AI 수요 예측 시스템</h3>
+                    <p>과거 판매 데이터, 날씨, 시즌, 이벤트 등 다양한 변수를 분석하여 정확한 수요를 예측합니다. 머신러닝 모델을 통해 지속적으로 예측 정확도를 개선하며, 재고 부족과 과잉을 최소화합니다.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🗺️</div>
+                    <h3>스마트 물류 최적화</h3>
+                    <p>AI 알고리즘으로 최적의 배송 경로를 설계하고, 실시간 교통 정보를 반영하여 배송 시간을 단축합니다. 지역 거점별 재고 배치 전략을 제시하여 라스트 마일 배송 효율을 극대화합니다.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📚</div>
+                    <h3>맞춤형 교육과 실행 지원</h3>
+                    <p>AI 예측 결과를 실제 비즈니스 액션으로 전환하는 방법을 교육합니다. 현장에서 바로 적용 가능한 실전 매뉴얼과 대시보드를 제공하며, 지속적인 컨설팅으로 성공적인 정착을 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 소개 섹션 -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">제공 서비스 🛠️</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>AI 수요 예측 시스템 구축</h3>
+                    <p>지역 농산물 및 특산품의 수요를 정확하게 예측하는 맞춤형 AI 모델을 구축합니다.</p>
+                    <button class="service-detail-btn" onclick="openModal('service1')">자세히 보기</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>물류 경로 최적화 컨설팅</h3>
+                    <p>배송 비용을 절감하고 신선도를 유지하는 최적의 배송 전략을 제시합니다.</p>
+                    <button class="service-detail-btn" onclick="openModal('service2')">자세히 보기</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>재고 관리 최적화 로드맵</h3>
+                    <p>AI 기반 재고 관리 전략으로 과잉 재고와 품절을 방지합니다.</p>
+                    <button class="service-detail-btn" onclick="openModal('service3')">자세히 보기</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>스마트 물류 교육 프로그램</h3>
+                    <p>대전·충청권 중소 유통 기업 대상 AI 활용 교육을 진행합니다.</p>
+                    <button class="service-detail-btn" onclick="openModal('service4')">자세히 보기</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>정기 유통 분석 보고서</h3>
+                    <p>월간/분기별 유통 현황 및 시장
